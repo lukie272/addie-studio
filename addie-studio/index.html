@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ADDIE Studio</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <section class="start-panel">
+        <div class="brand-row">
+          <div class="brand-mark" aria-hidden="true">A</div>
+          <div>
+            <h1>ADDIE Studio</h1>
+            <p>Type a clinical training idea. The studio finds evidence and drafts the course.</p>
+          </div>
+        </div>
+
+        <label class="topic-label" for="topicInput">What training do you want to create?</label>
+        <textarea
+          id="topicInput"
+          placeholder="For example: training ward nurses to safely manage chest drains"
+          spellcheck="true"
+        ></textarea>
+
+        <div class="options-row">
+          <label>
+            Who is it for?
+            <input id="learnerInput" type="text" placeholder="Optional" />
+          </label>
+          <label>
+            Your service or organisation
+            <input id="brandInput" type="text" placeholder="Optional" />
+          </label>
+          <label>
+            How will it be delivered?
+            <select id="deliveryInput">
+              <option>Not sure yet</option>
+              <option>Short workshop</option>
+              <option>Simulation session</option>
+              <option>Online module</option>
+              <option>Blended learning</option>
+              <option>Competency pathway</option>
+            </select>
+          </label>
+        </div>
+
+        <button class="primary-button" id="startButton" type="button">Find Evidence and Build Course</button>
+
+        <p class="note">
+          This prototype searches OpenAlex for published evidence and creates a first draft. A clinician
+          or educator should still check the evidence, local policy, and safety requirements before use.
+          The download is a ZIP folder of separate branded, printable documents.
+        </p>
+      </section>
+
+      <section class="progress-panel" aria-live="polite">
+        <div class="progress-header">
+          <h2 id="progressTitle">Ready</h2>
+          <span id="progressPercent">0%</span>
+        </div>
+        <div class="meter" aria-hidden="true"><span id="progressBar"></span></div>
+        <ol class="steps" id="stepsList"></ol>
+      </section>
+
+      <section class="results-panel">
+        <div class="result-tabs" role="tablist" aria-label="Results">
+          <button class="tab active" data-tab="course" type="button">Course Draft</button>
+          <button class="tab" data-tab="evidence" type="button">Evidence Found</button>
+        </div>
+
+        <div class="toolbar">
+          <button class="secondary-button" id="copyButton" type="button">Copy</button>
+          <button class="secondary-button" id="exportButton" type="button">Download Document Pack</button>
+        </div>
+
+        <textarea id="courseOutput" readonly placeholder="Your draft course will appear here."></textarea>
+        <div id="evidenceOutput" class="evidence-list" hidden></div>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
